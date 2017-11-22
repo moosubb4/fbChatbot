@@ -31,7 +31,15 @@ function getRes(req) {
 function handleMessage(req, id, sendMessage) {
     var response = getRes(req);
     if (!response) {
-res
+        response = getQuestionlist();
     }
+
+    sendMessage(response, id).then(() => {
+        console.log('response to \"' + req + '\"success');
+    }).catch(err => {
+        console.log(err);
+    });
 }
+
+module.exports = handleMessage;
 
